@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/location"
-        android:id="@+id/CityTextView3"
+        android:id="@+id/LocationTextView"
         android:layout_below="@+id/ConditionTextView"
         android:layout_centerHorizontal="true"
         android:textStyle="bold" />

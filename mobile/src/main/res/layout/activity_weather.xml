@@ -9,8 +9,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/WeatherImageView"
+        android:src="@drawable/na"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/YahooImageView"
+        android:layout_alignEnd="@+id/YahooImageView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,7 +21,8 @@
         android:text="@string/temperature"
         android:id="@+id/TemperatureTextView"
         android:layout_below="@+id/WeatherImageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +40,8 @@
         android:text="@string/location"
         android:id="@+id/CityTextView3"
         android:layout_below="@+id/ConditionTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="wrap_content"

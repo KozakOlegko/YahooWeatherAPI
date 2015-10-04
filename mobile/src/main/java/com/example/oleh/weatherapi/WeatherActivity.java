@@ -1,6 +1,7 @@
 package com.example.oleh.weatherapi;
 
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.oleh.weatherapi.data.Chanell;
+import com.example.oleh.weatherapi.data.Item;
 import com.example.oleh.weatherapi.service.YahooWeatherCallback;
 import com.example.oleh.weatherapi.service.YahooWeatherService;
 
@@ -41,11 +43,20 @@ public class WeatherActivity extends ActionBarActivity implements YahooWeatherCa
 
         service.refreshWeather("Lviv, Ukraine");
     }
-
-
-    @Override
+      @Override
     public void serviceSuccess(Chanell chanell) {
         dialog.hide();
+
+          Item item = chanell.getItem();
+          int resourceID = getResources().getIdentifier("drawable/icon_" + item.getCondition().getCode(), null, getPackageName());
+
+          Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
+          weatherImageView.setImageDrawable(weatherIconDrawable);
+
+          temparatureTextView.setText(item.getCondition().getTemparature()+ "\u00B0 "+chanell.getUnits().getTemperature());
+          conditionTextView.setText(item.getCondition().getDescription());
+          locationTextView.setText(service.getLocation());
+
 
     }
 
@@ -55,4 +66,7 @@ public class WeatherActivity extends ActionBarActivity implements YahooWeatherCa
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
 
     }
+
+
+
 }

@@ -11,8 +11,8 @@
         android:id="@+id/WeatherImageView"
         android:src="@drawable/na"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/YahooImageView"
-        android:layout_alignEnd="@+id/YahooImageView" />
+        android:layout_alignRight="@+id/TemperatureTextView"
+        android:layout_alignEnd="@+id/TemperatureTextView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,8 +46,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/YahooLogo"
-        android:id="@+id/YahooImageView"
+        android:id="@+id/yahoologo"
+        android:src="@drawable/yahoologo"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/TemperatureTextView"
+        android:layout_alignEnd="@+id/TemperatureTextView" />
+
+
 </RelativeLayout>

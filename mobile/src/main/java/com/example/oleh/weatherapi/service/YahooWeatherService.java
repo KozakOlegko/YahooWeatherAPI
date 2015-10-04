@@ -2,13 +2,9 @@ package com.example.oleh.weatherapi.service;
 
 import android.net.Uri;
 import android.os.AsyncTask;
-
-import com.example.oleh.weatherapi.WeatherActivity;
 import com.example.oleh.weatherapi.data.Chanell;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +12,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.Buffer;
 
 /**
  * Created by Oleh on 03.10.2015.
@@ -35,12 +30,13 @@ public class YahooWeatherService {
         return location;
     }
 
-    public void refreshWeather(final String location){
-        AsyncTask<String, Void, String> execute = new AsyncTask<String, Void, String>() {
+    public void refreshWeather(String l){
+        this.location = l;
+        new AsyncTask<String, Void, String>() {
             @Override
-            protected String doInBackground(String... params) {
+            protected String doInBackground(String... strings) {
 
-                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\")", location);
+                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\")", strings[0]);
                 String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", Uri.encode(YQL));
 
                 try {
@@ -82,7 +78,7 @@ public class YahooWeatherService {
 
                     if (count ==0)
                     {
-                        callback.serviceFailure(new LocalWeatherException("No weather details for this location"));
+                        callback.serviceFailure(new LocalWeatherException("No weather details for this location"+location));
                         return;
                     }
 

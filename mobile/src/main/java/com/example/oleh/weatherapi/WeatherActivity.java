@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +39,7 @@ public class WeatherActivity extends ActionBarActivity implements YahooWeatherCa
         dialog.setMessage("loading");
         dialog.show();
 
-        service.refreshWeather("Lviv, Ukraine");
+        service.refreshWeather("Austin, TX");
     }
       @Override
     public void serviceSuccess(Chanell chanell) {
